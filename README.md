@@ -1,59 +1,207 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SIMOM — Sistem Informasi Manajemen Organisasi Mahasiswa
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi
+Aplikasi web manajemen organisasi mahasiswa berbasis Laravel 12 + Tailwind CSS + MySQL.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Teknologi
+- **Laravel 12** — Backend Framework
+- **Laravel Breeze** — Autentikasi (Blade + Alpine.js)
+- **Tailwind CSS** — Styling
+- **MySQL** — Database
+- **CKEditor 5** — Editor notulensi rapat
+- **Alpine.js** — Interaktivitas UI (bundled dengan Breeze)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Fitur Utama
+| Modul | Fitur |
+|---|---|
+| Dashboard | Multi-role: Admin / Kepala Departemen / Anggota |
+| Departemen & Anggota | CRUD departemen, anggota, program kerja + progress tracking |
+| Rapat Akbar | Penjadwalan, presensi online, notulensi CKEditor, dokumentasi |
+| Inventaris | CRUD barang, pengajuan peminjaman, workflow approval |
+| Berkas | Upload/download/preview dokumen organisasi |
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+## Akun Default Setelah Seeder
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+| Role | Email | Password |
+|---|---|---|
+| Admin Utama | admin@simom.ac.id | password |
+| Kepala PSDM | rizky.maulana.hakim@student.simom.ac.id | password |
+| Kepala Media | gilang.permana.putra@student.simom.ac.id | password |
+| Kepala Pendidikan | arif.budi.santoso@student.simom.ac.id | password |
+| Kepala Inventaris | hendra.gunawan.wijaya@student.simom.ac.id | password |
+| Anggota/Staff | nadia.kusuma.dewi@student.simom.ac.id | password |
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Cara Instalasi
 
-### Premium Partners
+### 1. Buat project Laravel 12 baru
+```bash
+composer create-project laravel/laravel:^12 simom
+cd simom
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+### 2. Install Laravel Breeze
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install blade
+```
 
-## Contributing
+### 3. Copy semua file dari paket SIMOM ini
+Salin seluruh isi folder `simom/` ke dalam project Laravel yang baru dibuat.
+File yang di-copy akan **menimpa** file bawaan Laravel (itu wajar).
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 4. Install dependency frontend
+```bash
+npm install
+npm run dev
+```
 
-## Code of Conduct
+### 5. Konfigurasi environment
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Edit `.env` sesuaikan database:
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=simom_db
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## Security Vulnerabilities
+### 6. Buat database
+```sql
+CREATE DATABASE simom_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 7. Jalankan migrasi & seeder
+```bash
+php artisan migrate:fresh --seed
+```
 
-## License
+### 8. Link storage untuk file upload
+```bash
+php artisan storage:link
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 9. Jalankan server
+```bash
+php artisan serve
+npm run dev
+```
+
+Akses di: **http://127.0.0.1:8000**
+
+---
+
+## Urutan File Migrasi
+File migrasi harus dijalankan dalam urutan berikut:
+1. `2024_01_01_000000_create_departemens_table.php`
+2. `*_create_users_table.php` (bawaan Breeze)
+3. `2024_01_01_000001_add_fields_to_users_table.php`
+4. `2024_01_01_000002_create_program_kerjas_table.php`
+5. `2024_01_01_000003_create_rapat_akbars_table.php`
+6. `2024_01_01_000004_create_inventaris_table.php`
+7. `2024_01_01_000005_create_berkas_table.php`
+
+> **Penting:** Pastikan tanggal prefix migrasi departemen (`000000`) lebih awal dari migrasi `users`, karena users memerlukan foreign key ke departemens.
+
+---
+
+## Struktur Folder Kustom
+
+```
+app/
+├── Http/
+│   ├── Controllers/
+│   │   ├── DashboardController.php
+│   │   ├── DepartemenController.php
+│   │   ├── RapatAkbarController.php
+│   │   ├── InventarisController.php
+│   │   └── BerkasController.php
+│   └── Middleware/
+│       └── CheckRole.php
+└── Models/
+    ├── User.php
+    ├── Departemen.php
+    ├── ProgramKerja.php
+    ├── RapatAkbar.php
+    ├── Presensi.php
+    ├── NotulensiRapat.php
+    ├── DokumentasiRapat.php
+    ├── Inventaris.php
+    ├── PeminjamanInventaris.php
+    └── Berkas.php
+
+database/
+├── migrations/         ← 6 file migrasi kustom
+└── seeders/
+    └── DatabaseSeeder.php   ← Data dummy lengkap
+
+resources/views/
+├── layouts/app.blade.php   ← Layout utama + sidebar
+├── dashboard/
+│   ├── admin.blade.php
+│   ├── kepala.blade.php
+│   └── anggota.blade.php
+├── departemen/
+│   ├── index.blade.php
+│   ├── anggota.blade.php
+│   ├── create-anggota.blade.php
+│   ├── edit-anggota.blade.php
+│   └── proker.blade.php
+├── rapat/
+│   ├── index.blade.php
+│   ├── show.blade.php
+│   ├── create.blade.php
+│   ├── edit.blade.php
+│   ├── presensi.blade.php
+│   └── notulensi.blade.php
+├── inventaris/
+│   ├── index.blade.php
+│   ├── create.blade.php
+│   ├── edit.blade.php
+│   ├── peminjaman.blade.php
+│   └── ajukan.blade.php
+└── berkas/
+    ├── index.blade.php
+    ├── create.blade.php
+    └── show.blade.php
+
+routes/web.php          ← Semua route + RBAC middleware
+bootstrap/app.php       ← Registrasi middleware alias 'role'
+```
+
+---
+
+## RBAC Summary
+
+| Role | Dashboard | CRUD Anggota | Kelola Proker | Rapat | Ajukan Pinjam | Approve Pinjam | CRUD Inventaris | CRUD Berkas |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| Admin | ✅ Full | ✅ | ✅ Semua dep | ✅ CRUD | ✅ | ✅ | ✅ | ✅ |
+| Kepala Dep. | ✅ Partial | ❌ | ✅ Dep sendiri | ✅ View + presensi | ✅ | ❌ | ❌ | ❌ |
+| Kepala Inventaris | ✅ Partial | ❌ | ✅ Dep sendiri | ✅ View + presensi | ✅ | ✅ | ✅ | ❌ |
+| Anggota/Staff | ✅ Simple | ❌ | ❌ | ✅ View + presensi | ❌ | ❌ | ❌ | ❌ |
+
+---
+
+## Catatan Pengembangan
+- Menggunakan **Alpine.js** (bundled Breeze) untuk dropdown, modal, dan toggle
+- **CKEditor 5** dimuat via CDN untuk editor notulensi
+- File upload disimpan di `storage/app/public/` dengan symlink ke `public/storage`
+- Pagination menggunakan Tailwind theme dari Breeze
+- Semua form menggunakan CSRF protection `@csrf`
+
+---
+
+*SIMOM v1.0 — Dibuat untuk keperluan tugas kuliah Pemrograman Web / Rekayasa Perangkat Lunak*
