@@ -381,7 +381,14 @@
                     </svg>
                 </button>
             </form>
- 
+
+            <p style="text-align: center; margin-top: 16px; font-size: 13px; color: #6b7a8d;">
+             Belum punya akun?
+            <a href="{{ route('register') }}" style="color: #3b82f6; font-weight: 600; text-decoration: none;">
+                Daftar Sekarang
+            </a>
+            </p>
+
             <div class="divider">
                 <div class="divider-line"></div>
                 <span class="divider-text">atau</span>

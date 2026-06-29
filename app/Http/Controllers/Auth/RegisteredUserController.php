@@ -19,9 +19,10 @@ class RegisteredUserController extends Controller
      * Display the registration view.
      */
     public function create(): View
-    {
-        return view('auth.register');
-    }
+{
+    $departemens = \App\Models\Departemen::all();
+    return view('auth.register', compact('departemens'));
+}
 
     /**
      * Handle an incoming registration request.
@@ -29,23 +30,35 @@ class RegisteredUserController extends Controller
      * @throws ValidationException
      */
     public function store(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-        ]);
+{
+    $request->validate([
+        'name'         => ['required', 'string', 'max:255'],
+        'nim'          => ['required', 'string', 'unique:users,nim'],
+        'email'        => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email'],
+        'no_hp'        => ['nullable', 'string', 'max:20'],
+        'angkatan'     => ['required', 'string'],
+        'departemen_id'=> ['required', 'exists:departemens,id'],
+        'jabatan'      => ['required', 'in:Ketua Umum,Sekretaris,Kepala Departemen,Staff'],
+        'role'         => ['required', 'in:admin,kepala_departemen,kepala_inventaris,anggota'],
+        'password'     => ['required', 'confirmed', Rules\Password::defaults()],
+    ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+    $user = User::create([
+        'name'          => $request->name,
+        'nim'           => $request->nim,
+        'email'         => $request->email,
+        'no_hp'         => $request->no_hp,
+        'angkatan'      => $request->angkatan,
+        'departemen_id' => $request->departemen_id,
+        'jabatan'       => $request->jabatan,
+        'role'          => $request->role,
+        'password'      => Hash::make($request->password),
+    ]);
 
-        event(new Registered($user));
+    event(new Registered($user));
 
-        Auth::login($user);
+    Auth::login($user);
 
-        return redirect(route('dashboard', absolute: false));
-    }
+    return redirect(route('dashboard', absolute: false));
+}
 }
