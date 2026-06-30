@@ -19,7 +19,7 @@
         /* ===== LEFT PANEL ===== */
         .left-panel {
             width: 50%;
-            background-color: #0d1424;
+            background-color: #ffa500;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
