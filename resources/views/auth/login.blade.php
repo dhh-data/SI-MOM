@@ -277,11 +277,7 @@
     {{-- LEFT PANEL --}}
     <div class="left-panel">
         <div class="logo-area">
-            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="20,4 36,34 4,34" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/>
-                <polygon points="20,12 30,30 10,30" fill="#3b82f6" opacity="0.5"/>
-                <line x1="20" y1="4" x2="20" y2="34" stroke="#5b9cf6" stroke-width="1.5" opacity="0.5"/>
-            </svg>
+            <img src="{{ asset('images/logo.jpeg') }}" alt="SIMOM Logo" class="logo-icon">
             <span class="logo-text">SIMOM</span>
         </div>
  
