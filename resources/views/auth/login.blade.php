@@ -210,26 +210,30 @@
         }
  
         .btn-primary {
-            width: 100%;
-            padding: 14px;
-            background: #0d1424;
-            color: #fff;
-            border: none;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.15s, transform 0.1s;
-            margin-top: 8px;
-        }
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(135deg, #1a6b8a 0%, #0f4c6b 100%);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s, transform 0.1s;
+    margin-top: 8px;
+}
  
-        .btn-primary:hover { background: #1a2640; }
-        .btn-primary:active { transform: scale(0.99); }
+        .btn-primary:hover { 
+    background: linear-gradient(135deg, #1f7da0 0%, #1a6b8a 100%);
+}
+        .btn-primary:active { 
+    transform: scale(0.99); 
+}
  
         .divider {
             display: flex;
