@@ -99,7 +99,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    background: #38bdf8;
+    background: #7dd3fc;
     border-radius: 2px;
 }
 
