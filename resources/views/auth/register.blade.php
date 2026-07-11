@@ -12,30 +12,33 @@
         body { font-family: 'Inter', sans-serif; min-height: 100vh; display: flex; }
 
         .left-panel {
-            width: 50%; background-color: #0d1424;
-            display: flex; flex-direction: column; justify-content: space-between;
-            padding: 40px 52px; position: relative; overflow: hidden;
-        }
-        .left-panel::before {
-            content: ''; position: absolute; inset: 0;
-            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 48px 48px; pointer-events: none;
-        }
-        .left-panel::after {
-            content: ''; position: absolute; bottom: -120px; left: -80px;
-            width: 400px; height: 400px;
-            background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
-            pointer-events: none;
-        }
+    width: 50%;
+    background: linear-gradient(160deg, #1a6b8a 0%, #0f4c6b 40%, #0a3550 100%);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 40px 52px; position: relative; overflow: hidden;
+}
+
+.left-panel::before {
+    content: ''; position: absolute; inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px; pointer-events: none;
+}
+
+.left-panel::after {
+    content: ''; position: absolute; bottom: -100px; left: -60px;
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
         .logo-area { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
         .logo-icon { width: 40px; height: 40px; }
-        .logo-text { font-size: 15px; font-weight: 700; color: #ffffff; letter-spacing: 0.02em; }
+        .logo-text { font-size: 18px; font-weight: 800; color: #ffffff; letter-spacing: 0.08em; }
         .hero-content { position: relative; z-index: 1; }
-        .hero-headline { font-size: 52px; font-weight: 800; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; }
-        .hero-divider { width: 3px; height: 100%; position: absolute; left: 0; top: 0; background: #3b82f6; border-radius: 2px; }
+        .hero-headline { font-size: 52px; font-weight: 800; color: #ffffff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 28px; text-shadow: 0 2px 16px rgba(0,0,0,0.2); }
+        .hero-divider { width: 3px; height: 100%; position: absolute; left: 0; top: 0; background: #7dd3fc; border-radius: 2px; }
         .hero-desc-wrap { position: relative; padding-left: 20px; }
-        .hero-desc { font-size: 15px; font-weight: 400; color: #8fa3bf; line-height: 1.65; max-width: 380px; }
-        .left-footer { position: relative; z-index: 1; font-size: 12px; color: #374a60; }
+        .hero-desc { font-size: 15px; font-weight: 400; color: #b8d8ea; line-height: 1.65; max-width: 380px; }
+.left-footer { position: relative; z-index: 1; font-size: 12px; color: #5b9ab8; }
 
         .right-panel {
             width: 50%; background-color: #f5f6f8;
@@ -64,14 +67,15 @@
         .form-input.error { border-color: #ef4444; }
         .error-msg { margin-top: 5px; font-size: 11.5px; color: #ef4444; }
         .btn-primary {
-            width: 100%; padding: 14px; background: #0d1424; color: #fff;
-            border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
-            font-family: 'Inter', sans-serif; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-            transition: background 0.15s, transform 0.1s; margin-top: 8px;
-        }
-        .btn-primary:hover { background: #1a2640; }
-        .btn-primary:active { transform: scale(0.99); }
+    width: 100%; padding: 14px;
+    background: linear-gradient(135deg, #1a6b8a 0%, #0f4c6b 100%);
+    color: #fff; border: none; border-radius: 10px; font-size: 15px; font-weight: 600;
+    font-family: 'Inter', sans-serif; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    transition: background 0.15s, transform 0.1s; margin-top: 8px;
+}
+.btn-primary:hover { background: linear-gradient(135deg, #1f7da0 0%, #1a6b8a 100%); }
+.btn-primary:active { transform: scale(0.99); }
         .login-link { text-align: center; margin-top: 20px; font-size: 13px; color: #6b7a8d; }
         .login-link a { color: #3b82f6; font-weight: 600; text-decoration: none; }
         .login-link a:hover { text-decoration: underline; }
@@ -92,13 +96,14 @@
     {{-- LEFT PANEL --}}
     <div class="left-panel">
         <div class="logo-area">
-            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <polygon points="20,4 36,34 4,34" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linejoin="round"/>
-                <polygon points="20,12 30,30 10,30" fill="#3b82f6" opacity="0.5"/>
-                <line x1="20" y1="4" x2="20" y2="34" stroke="#5b9cf6" stroke-width="1.5" opacity="0.5"/>
-            </svg>
-            <span class="logo-text">SIMOM</span>
-        </div>
+    <img src="{{ asset('images/logo.jpeg') }}" alt="SIMOM Logo" class="logo-icon" style="width:36px;height:36px;border-radius:8px;object-fit:contain;">
+    <div>
+        <span class="logo-text">SI-MOM</span>
+        <p style="font-size: 10px; color: #7ec8e3; margin: 0; letter-spacing: 0.05em; font-weight: 500;">
+            Sistem Informasi-Manajemen Organisasi Mahasiswa
+        </p>
+    </div>
+</div>
 
         <div class="hero-content">
             <h1 class="hero-headline">Bergabung<br>bersama kami.</h1>
