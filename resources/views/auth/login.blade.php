@@ -18,37 +18,38 @@
  
         /* ===== LEFT PANEL ===== */
         .left-panel {
-            width: 50%;
-            background-color: #0c4f6a;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 40px 52px;
-            position: relative;
-            overflow: hidden;
-        }
- 
-        .left-panel::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-            background-size: 48px 48px;
-            pointer-events: none;
-        }
- 
-        .left-panel::after {
-            content: '';
-            position: absolute;
-            bottom: -120px;
-            left: -80px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(59,130,246,0.18) 0%, transparent 70%);
-            pointer-events: none;
-        }
+    width: 50%;
+    background: linear-gradient(160deg, #1a6b8a 0%, #0f4c6b 40%, #0a3550 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 52px;
+    position: relative;
+    overflow: hidden;
+}
+
+.left-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+}
+
+.left-panel::after {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: -60px;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(56,189,248,0.15) 0%, transparent 70%);
+    pointer-events: none;
+}
+
  
         .logo-area {
             display: flex;
@@ -78,28 +79,32 @@
         }
  
         .hero-headline {
-            font-size: 52px;
-            font-weight: 800;
-            color: #ffffff;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin-bottom: 28px;
-        }
+    font-size: 52px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin-bottom: 28px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
  
         .hero-divider {
-            width: 3px;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            background: #3b82f6;
-            border-radius: 2px;
-        }
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #38bdf8;
+    border-radius: 2px;
+}
  
-        .hero-desc-wrap {
-            position: relative;
-            padding-left: 20px;
-        }
+        .hero-desc {
+    font-size: 15px;
+    font-weight: 400;
+    color: #b8d8ea;
+    line-height: 1.65;
+    max-width: 380px;
+}
  
         .hero-desc {
             font-size: 15px;
@@ -110,11 +115,11 @@
         }
  
         .left-footer {
-            position: relative;
-            z-index: 1;
-            font-size: 12px;
-            color: #374a60;
-        }
+    position: relative;
+    z-index: 1;
+    font-size: 12px;
+    color: #5b9ab8;
+}
  
         /* ===== RIGHT PANEL ===== */
         .right-panel {
@@ -285,7 +290,7 @@
     <img src="{{ asset('images/logo.jpeg') }}" alt="SIMOM Logo" class="logo-icon">
     <div>
         <span class="logo-text">SI-MOM</span>
-        <p style="font-size: 10px; color: #5b7a9a; margin: 0; letter-spacing: 0.05em; font-weight: 500;">
+        <p style="font-size: 10px; color: #7ec8e3; margin: 0; letter-spacing: 0.05em; font-weight: 500;">
             Sistem Informasi-Manajemen Organisasi Mahasiswa
         </p>
     </div>
