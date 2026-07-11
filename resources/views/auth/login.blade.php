@@ -87,6 +87,11 @@
     margin-bottom: 28px;
     text-shadow: 0 2px 16px rgba(0,0,0,0.2);
 }
+
+.hero-desc-wrap {
+    position: relative;
+    padding-left: 20px;
+}
  
         .hero-divider {
     width: 3px;
@@ -97,7 +102,7 @@
     background: #38bdf8;
     border-radius: 2px;
 }
- 
+
         .hero-desc {
     font-size: 15px;
     font-weight: 400;
@@ -106,13 +111,6 @@
     max-width: 380px;
 }
  
-        .hero-desc {
-            font-size: 15px;
-            font-weight: 400;
-            color: #8fa3bf;
-            line-height: 1.65;
-            max-width: 380px;
-        }
  
         .left-footer {
     position: relative;
