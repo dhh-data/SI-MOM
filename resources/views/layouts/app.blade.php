@@ -17,17 +17,17 @@
 
         /* Sidebar */
         #sidebar {
-            background: #0d1424;
-            width: 240px;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            position: sticky;
-            top: 0;
-            overflow-y: auto;
-            scrollbar-width: none;
-        }
+    background: linear-gradient(160deg, #1a6b8a 0%, #0f4c6b 40%, #0a3550 100%);
+    width: 240px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    overflow-y: auto;
+    scrollbar-width: none;
+}
         #sidebar::-webkit-scrollbar { display: none; }
 
         /* Sidebar grid overlay */
@@ -65,7 +65,7 @@
             border-radius: 8px;
             font-size: 13px;
             font-weight: 500;
-            color: #64748b;
+            color: #93c5d8;
             transition: all 0.15s;
             text-decoration: none;
             cursor: pointer;
@@ -73,9 +73,10 @@
             background: none;
             width: 100%;
             text-align: left;
-        }
-        .nav-link:hover { background: rgba(255,255,255,0.06); color: #cbd5e1; }
-        .nav-link.active { background: rgba(59,130,246,0.15); color: #60a5fa; }
+       }
+.nav-link:hover { background: rgba(255,255,255,0.08); color: #e0f2fe; }
+.nav-link.active { background: rgba(255,255,255,0.15); color: #ffffff; }
+
         .nav-link.danger { color: #f87171; }
         .nav-link.danger:hover { background: rgba(239,68,68,0.1); color: #fca5a5; }
 
@@ -85,7 +86,7 @@
             padding: 0 10px;
             font-size: 10px;
             font-weight: 700;
-            color: #334155;
+            color: #4a8fa8;
             letter-spacing: 0.08em;
             text-transform: uppercase;
             margin-bottom: 6px;
@@ -169,20 +170,18 @@
         {{-- Logo --}}
         <div style="padding: 20px 16px 16px; border-bottom: 1px solid rgba(255,255,255,0.07);">
             <div style="display:flex; align-items:center; gap:10px;">
-                <div style="width:36px; height:36px; background:#3b82f6; border-radius:10px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0012 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75z"/>
-                    </svg>
-                </div>
-                <div>
-                    <div style="font-weight:700; font-size:14px; color:#f1f5f9; line-height:1.2;">SIMOM</div>
-                    <div style="font-size:10px; color:#475569; line-height:1.2;">Manajemen Organisasi</div>
-                </div>
+                <img src="{{ asset('images/logo.jpeg') }}" alt="Logo"
+     style="width:36px; height:36px; border-radius:8px; object-fit:contain; flex-shrink:0;">
+<div>
+    <div style="font-weight:800; font-size:14px; color:#f1f5f9; letter-spacing:0.05em; line-height:1.2;">SI-MOM</div>
+    <div style="font-size:10px; color:#7ec8e3; line-height:1.2;">Manajemen Organisasi Mahasiswa</div>
+</div>
+    
             </div>
         </div>
 
         {{-- User Card --}}
-        <div style="margin: 12px; padding: 10px 12px; background: rgba(255,255,255,0.04); border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);">
+        <div style="margin: 12px; padding: 10px 12px; background: rgba(255,255,255,0.08); border-radius: 10px; border: 1px solid rgba(255,255,255,0.12);">
             <div style="display:flex; align-items:center; gap:10px;">
                 <div style="width:34px; height:34px; border-radius:50%; background:#3b82f6; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:white; flex-shrink:0;">
                     {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}
@@ -191,7 +190,7 @@
                     <div style="font-size:12.5px; font-weight:600; color:#e2e8f0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                         {{ Auth::user()->name }}
                     </div>
-                    <div style="font-size:10.5px; color:#475569; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
+                    <div style="font-size:10.5px; color:#7ec8e3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">
                         {{ Auth::user()->getRoleLabel() }}
                     </div>
                 </div>
@@ -259,7 +258,7 @@
         </nav>
 
         {{-- Sidebar Footer --}}
-        <div style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size:10px; color:#334155; text-align:center;">
+        <div style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size:10px; color:#5b9ab8; text-align:center;">
             SIMOM v1.0 &copy; 2024
         </div>
     </aside>
