@@ -238,34 +238,7 @@
             text-transform: uppercase;
         }
  
-        .btn-guest {
-            width: 100%;
-            padding: 13px;
-            background: #f5f6f8;
-            color: #4a5568;
-            border: 1.5px solid #e5e9ef;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.15s, border-color 0.15s;
-            text-decoration: none;
-        }
- 
         .btn-guest:hover { background: #eef0f3; border-color: #d0d7df; }
- 
-        .guest-note {
-            margin-top: 12px;
-            font-size: 11.5px;
-            color: #a0aab5;
-            text-align: center;
-            line-height: 1.5;
-        }
  
         .guest-note strong { color: #6b7a8d; }
  
@@ -387,25 +360,6 @@
             <a href="{{ route('register') }}" style="color: #3b82f6; font-weight: 600; text-decoration: none;">
                 Daftar Sekarang
             </a>
-            </p>
-
-            <div class="divider">
-                <div class="divider-line"></div>
-                <span class="divider-text">atau</span>
-                <div class="divider-line"></div>
-            </div>
- 
-            <a href="#" class="btn-guest">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
-                    <circle cx="8" cy="8" r="6"/>
-                    <path d="M8 5v.5M8 8v3"/>
-                </svg>
-                Eksplorasi sebagai Tamu
-            </a>
- 
-            <p class="guest-note">
-                Mode Tamu memberikan Anda akses <strong>hanya-baca (read-only)</strong>
-                untuk melihat fungsionalitas sistem.
             </p>
  
             <div class="powered-by">Powered by SIMOM</div>
