@@ -53,18 +53,23 @@
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
             position: relative;
             z-index: 1;
         }
  
-        .logo-icon { width: 40px; height: 40px; }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            object-fit: contain;
+        }
  
         .logo-text {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 18px;
+            font-weight: 800;
             color: #ffffff;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.08em;
         }
  
         .hero-content {
@@ -277,9 +282,14 @@
     {{-- LEFT PANEL --}}
     <div class="left-panel">
         <div class="logo-area">
-            <img src="{{ asset('images/logo.jpeg') }}" alt="SIMOM Logo" class="logo-icon">
-            <span class="logo-text">SIMOM</span>
-        </div>
+    <img src="{{ asset('images/logo.jpeg') }}" alt="SIMOM Logo" class="logo-icon">
+    <div>
+        <span class="logo-text">SI-MOM</span>
+        <p style="font-size: 10px; color: #5b7a9a; margin: 0; letter-spacing: 0.05em; font-weight: 500;">
+            Sistem Informasi-Manajemen Organisasi Mahasiswa
+        </p>
+    </div>
+</div>
  
         <div class="hero-content">
             <h1 class="hero-headline">Sistem kerja<br>terpadu.</h1>
