@@ -49,11 +49,19 @@
             </div>
         </div>
 
-        @if (isset($display_delete) && $display_delete)
+        <div class="md:col-span-2 pt-8 border-t border-slate-100">
+            <div class="bg-white rounded-3xl shadow-xl shadow-slate-100/50 border border-slate-100 overflow-hidden">
+                <div class="p-8">
+                    @include('profile.partials.update-password-form')
+                </div>
+            </div>
+        </div>
+
         <div class="md:col-span-1 pt-8 border-t border-slate-100">
             <h3 class="text-lg font-semibold text-red-600">Hapus Akun</h3>
             <p class="mt-1 text-sm text-slate-500">Setelah akun dihapus, semua data akan hilang secara permanen.</p>
         </div>
+        
         <div class="md:col-span-2 pt-8 border-t border-slate-100">
             <div class="bg-white rounded-3xl shadow-sm border border-red-100 overflow-hidden">
                 <div class="p-8">
@@ -61,7 +69,7 @@
                 </div>
             </div>
         </div>
-        @endif
+
     </div>
 </div>
 @endsection
