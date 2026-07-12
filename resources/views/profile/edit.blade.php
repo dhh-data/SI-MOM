@@ -6,6 +6,13 @@
 @section('content')
 <div class="max-w-3xl mx-auto space-y-6">
 
+    {{-- Tombol Kembali --}}
+    <div class="flex justify-start">
+        <a href="{{ url()->previous() }}" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition inline-flex items-center gap-2">
+            ← Kembali
+        </a>
+    </div>
+
     {{-- Update Profile --}}
     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
         <h3 class="text-sm font-semibold text-slate-800 mb-1">Informasi Profil</h3>
