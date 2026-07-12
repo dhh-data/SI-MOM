@@ -5,10 +5,8 @@
     
     <div class="flex items-center justify-between mb-8">
         <div class="flex items-center gap-4">
-            <div class="p-3 bg-blue-600 rounded-2xl shadow-lg shadow-blue-200">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="id-badge" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
+            <div class="p-1 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center overflow-hidden">
+                <img src="{{ asset('images/logo.jpeg') }}" alt="Logo" class="h-12 w-12 object-contain">
             </div>
             <div>
                 <h2 class="text-2xl font-bold text-slate-800">Pengaturan Profil</h2>
