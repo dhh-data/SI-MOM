@@ -1,119 +1,69 @@
 @extends('layouts.app')
-@section('title', 'Profil Saya')
-@section('page-title', 'Profil Saya')
-@section('breadcrumb', 'Pengaturan akun dan keamanan')
 
 @section('content')
-<div class="max-w-3xl mx-auto space-y-6">
-
-    {{-- Tombol Kembali --}}
-    <div class="flex justify-start">
-        <a href="{{ url()->previous() }}" class="px-4 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition inline-flex items-center gap-2">
-            ← Kembali
+<div class="max-w-4xl mx-auto pb-12">
+    
+    <div class="flex items-center justify-between mb-8">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-blue-600 rounded-2xl shadow-lg shadow-blue-200">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="id-badge" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                </svg>
+            </div>
+            <div>
+                <h2 class="text-2xl font-bold text-slate-800">Pengaturan Profil</h2>
+                <p class="text-sm text-slate-500">Kelola informasi akun dan keamanan kata sandi Anda</p>
+            </div>
+        </div>
+        
+        <a href="{{ url()->previous() }}" class="group flex items-center gap-2 px-4 py-2 bg-white border border-slate-200 text-slate-600 rounded-xl hover:bg-slate-50 transition-all shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span class="text-sm font-medium">Kembali</span>
         </a>
     </div>
 
-    {{-- Update Profile --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
-        <h3 class="text-sm font-semibold text-slate-800 mb-1">Informasi Profil</h3>
-        <p class="text-xs text-slate-500 mb-5">Perbarui nama dan email akun kamu.</p>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="md:col-span-1">
+            <h3 class="text-lg font-semibold text-slate-800">Informasi Pribadi</h3>
+            <p class="mt-1 text-sm text-slate-500">Pastikan alamat email Anda aktif untuk menerima notifikasi sistem.</p>
+        </div>
 
-        <form method="POST" action="{{ route('profile.update') }}" class="space-y-4">
-            @csrf
-            @method('patch')
-
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Nama Lengkap</label>
-                <input type="text" name="name" value="{{ old('name', $user->name) }}" required
-                       class="w-full px-3.5 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('name')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
+        <div class="md:col-span-2">
+            <div class="bg-white rounded-3xl shadow-xl shadow-slate-100/50 border border-slate-100 overflow-hidden">
+                <div class="p-8">
+                    @include('profile.partials.update-profile-information-form')
+                </div>
             </div>
+        </div>
 
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Email</label>
-                <input type="email" name="email" value="{{ old('email', $user->email) }}" required
-                       class="w-full px-3.5 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('email')<p class="mt-1 text-xs text-red-500">{{ $message }}</p>@enderror
-            </div>
+        <div class="md:col-span-1 pt-8 border-t border-slate-100">
+            <h3 class="text-lg font-semibold text-slate-800">Keamanan Akun</h3>
+            <p class="mt-1 text-sm text-slate-500">Gunakan kombinasi kata sandi yang kuat untuk menjaga akun tetap aman.</p>
+        </div>
 
-            <div class="flex items-center gap-3 pt-2">
-                <button type="submit"
-                        class="px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition">
-                    Simpan Perubahan
-                </button>
-                @if(session('status') === 'profile-updated')
-                <span class="text-xs text-green-600 font-medium">✓ Tersimpan!</span>
-                @endif
+        <div class="md:col-span-2 pt-8 border-t border-slate-100">
+            <div class="bg-white rounded-3xl shadow-xl shadow-slate-100/50 border border-slate-100 overflow-hidden">
+                <div class="p-8">
+                    @include('profile.partials.update-password-form')
+                </div>
             </div>
-        </form>
+        </div>
+
+        @if (isset($display_delete) && $display_delete)
+        <div class="md:col-span-1 pt-8 border-t border-slate-100">
+            <h3 class="text-lg font-semibold text-red-600">Hapus Akun</h3>
+            <p class="mt-1 text-sm text-slate-500">Setelah akun dihapus, semua data akan hilang secara permanen.</p>
+        </div>
+        <div class="md:col-span-2 pt-8 border-t border-slate-100">
+            <div class="bg-white rounded-3xl shadow-sm border border-red-100 overflow-hidden">
+                <div class="p-8">
+                    @include('profile.partials.delete-user-form')
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
-
-    {{-- Update Password --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
-        <h3 class="text-sm font-semibold text-slate-800 mb-1">Ubah Kata Sandi</h3>
-        <p class="text-xs text-slate-500 mb-5">Pastikan akun kamu menggunakan kata sandi yang kuat.</p>
-
-        <form method="POST" action="{{ route('password.update') }}" class="space-y-4">
-            @csrf
-            @method('put')
-
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Kata Sandi Saat Ini</label>
-                <input type="password" name="current_password" autocomplete="current-password"
-                       class="w-full px-3.5 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('current_password', 'updatePassword')
-                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Kata Sandi Baru</label>
-                <input type="password" name="password" autocomplete="new-password"
-                       class="w-full px-3.5 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('password', 'updatePassword')
-                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div>
-                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Konfirmasi Kata Sandi Baru</label>
-                <input type="password" name="password_confirmation" autocomplete="new-password"
-                       class="w-full px-3.5 py-2.5 text-sm border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @error('password_confirmation', 'updatePassword')
-                <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="flex items-center gap-3 pt-2">
-                <button type="submit"
-                        class="px-5 py-2.5 bg-blue-600 text-white text-sm font-medium rounded-xl hover:bg-blue-700 transition">
-                    Ubah Kata Sandi
-                </button>
-                @if(session('status') === 'password-updated')
-                <span class="text-xs text-green-600 font-medium">✓ Kata sandi diperbarui!</span>
-                @endif
-            </div>
-        </form>
-    </div>
-
-    {{-- Delete Account --}}
-    <div class="bg-white rounded-2xl shadow-sm border border-red-100 p-6">
-        <h3 class="text-sm font-semibold text-red-600 mb-1">Hapus Akun</h3>
-        <p class="text-xs text-slate-500 mb-5">Setelah akun dihapus, semua data akan hilang permanen.</p>
-
-        <div x-data="{ confirm: false }">
-            <button @click="confirm = true"
-                    class="px-5 py-2.5 bg-red-600 text-white text-sm font-medium rounded-xl hover:bg-red-700 transition">
-                Hapus Akun Saya
-            </button>
-
-            {{-- Confirm Modal --}}
-            <div x-show="confirm"
-                 class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
-                 x-transition.opacity>
-                <div class="bg-white rounded-2xl shadow-xl w-full max-w-md p-6" @click.away="confirm = false">
-                    <h4 class="font-semibold text-slate-800 mb-2">Yakin ingin hapus akun?</h4>
-                    <p class="text-sm text-slate-500 mb-5">Tindakan ini tidak dapat dibatalkan. Semua data akan hilang permanen.</p>
-
-                    <form method="POST" action="{{ route('profile.destroy') }}">
-                        @csrf
+</div>
+@endsection
