@@ -259,7 +259,7 @@
 
         {{-- Sidebar Footer --}}
         <div style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size:10px; color:#5b9ab8; text-align:center;">
-            SIMOM v1.0 &copy; 2024
+            SIMOM v1.0 &copy; 2026
         </div>
     </aside>
 
