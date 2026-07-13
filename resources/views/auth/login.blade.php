@@ -293,7 +293,7 @@
     <div>
         <span class="logo-text">SI-MOM</span>
         <p style="font-size: 10px; color: #7ec8e3; margin: 0; letter-spacing: 0.05em; font-weight: 500;">
-            Sistem Informasi-Manajemen Organisasi Mahasiswa
+            Sistem Informasi-Manajemen Organisasi Mahasiswa 2026/2027
         </p>
     </div>
 </div>
