@@ -26,7 +26,7 @@
                 <div class="grid grid-cols-5 gap-2">
                     @php
                     $katIcons = ['Proposal'=>'📋','LPJ'=>'📊','Notulen'=>'📝','Surat'=>'✉️','Dokumentasi'=>'📁'];
-                    $katColors = ['Proposal'=>'border-blue-300 bg-blue-50 text-blue-700','LPJ'=>'border-purple-300 bg-purple-50 text-purple-700','Notulen'=>'border-green-300 bg-green-50 text-green-700','Surat'=>'border-orange-300 bg-orange-50 text-orange-700','Dokumentasi'=>'border-pink-300 bg-pink-50 text-pink-700'];
+                    $katColors = ['Proposal'=>'border-blue-300 bg-blue-50 text-blue-700','LPJ'=>'border-blue-300 bg-blue-50 text-blue-700','Notulen'=>'border-blue-300 bg-blue-50 text-blue-700','Surat'=>'border-blue-300 bg-blue-50 text-blue-700','Dokumentasi'=>'border-blue-300 bg-blue-50 text-blue-700'];
                     @endphp
                     @foreach($katIcons as $kat => $icon)
                     <label class="cursor-pointer">
