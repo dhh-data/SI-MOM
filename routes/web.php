@@ -15,7 +15,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-    // Profile (dari Breeze)
+    // Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -23,11 +23,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Departemen & Anggota
     Route::prefix('departemen')->name('departemen.')->group(function () {
         Route::get('/', [DepartemenController::class, 'index'])->name('index');
-
-        // Anggota - semua role bisa lihat
         Route::get('/anggota', [DepartemenController::class, 'anggota'])->name('anggota');
+        Route::get('/proker', [DepartemenController::class, 'programKerja'])->name('proker');
 
-        // CRUD Anggota - hanya admin
         Route::middleware('role:admin')->group(function () {
             Route::get('/anggota/create', [DepartemenController::class, 'createAnggota'])->name('anggota.create');
             Route::post('/anggota', [DepartemenController::class, 'storeAnggota'])->name('anggota.store');
@@ -36,8 +34,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::delete('/anggota/{anggota}', [DepartemenController::class, 'destroyAnggota'])->name('anggota.destroy');
         });
 
-        // Program Kerja
-        Route::get('/proker', [DepartemenController::class, 'programKerja'])->name('proker');
         Route::middleware('role:admin,kepala_departemen,kepala_inventaris')->group(function () {
             Route::post('/proker', [DepartemenController::class, 'storeProker'])->name('proker.store');
             Route::put('/proker/{proker}', [DepartemenController::class, 'updateProker'])->name('proker.update');
@@ -48,6 +44,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Rapat Akbar
     Route::prefix('rapat')->name('rapat.')->group(function () {
         Route::get('/', [RapatAkbarController::class, 'index'])->name('index');
+
+        // create & store HARUS di atas /{rapat}
+        Route::middleware('role:admin')->group(function () {
+            Route::get('/create', [RapatAkbarController::class, 'create'])->name('create');
+            Route::post('/', [RapatAkbarController::class, 'store'])->name('store');
+        });
+
+        // Route dengan parameter di bawah
         Route::get('/{rapat}', [RapatAkbarController::class, 'show'])->name('show');
         Route::get('/{rapat}/presensi', [RapatAkbarController::class, 'presensi'])->name('presensi');
         Route::post('/{rapat}/presensi', [RapatAkbarController::class, 'isiPresensi'])->name('presensi.isi');
@@ -55,10 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::post('/{rapat}/notulensi', [RapatAkbarController::class, 'storeNotulensi'])->name('notulensi.store');
         Route::post('/{rapat}/dokumentasi', [RapatAkbarController::class, 'storeDokumentasi'])->name('dokumentasi.store');
 
-        // Hanya admin
         Route::middleware('role:admin')->group(function () {
-            Route::get('/create', [RapatAkbarController::class, 'create'])->name('create');
-            Route::post('/', [RapatAkbarController::class, 'store'])->name('store');
             Route::get('/{rapat}/edit', [RapatAkbarController::class, 'edit'])->name('edit');
             Route::put('/{rapat}', [RapatAkbarController::class, 'update'])->name('update');
             Route::delete('/{rapat}', [RapatAkbarController::class, 'destroy'])->name('destroy');
@@ -71,21 +72,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', [InventarisController::class, 'index'])->name('index');
         Route::get('/peminjaman', [InventarisController::class, 'peminjaman'])->name('peminjaman');
 
-        // Ajukan Peminjaman - kepala departemen
         Route::middleware('role:admin,kepala_departemen,kepala_inventaris')->group(function () {
             Route::get('/ajukan', [InventarisController::class, 'ajukanPeminjaman'])->name('ajukan');
             Route::post('/peminjaman', [InventarisController::class, 'storePeminjaman'])->name('peminjaman.store');
         });
 
-        // Approval - admin dan kepala inventaris
-        Route::middleware('role:admin,kepala_inventaris')->group(function () {
-            Route::post('/peminjaman/{peminjaman}/approval', [InventarisController::class, 'approvalPeminjaman'])->name('peminjaman.approval');
-        });
-
-        // CRUD Inventaris - admin dan kepala inventaris
         Route::middleware('role:admin,kepala_inventaris')->group(function () {
             Route::get('/create', [InventarisController::class, 'create'])->name('create');
             Route::post('/', [InventarisController::class, 'store'])->name('store');
+            Route::post('/peminjaman/{peminjaman}/approval', [InventarisController::class, 'approvalPeminjaman'])->name('peminjaman.approval');
             Route::get('/{inventaris}/edit', [InventarisController::class, 'edit'])->name('edit');
             Route::put('/{inventaris}', [InventarisController::class, 'update'])->name('update');
             Route::delete('/{inventaris}', [InventarisController::class, 'destroy'])->name('destroy');
@@ -95,15 +90,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Berkas
     Route::prefix('berkas')->name('berkas.')->group(function () {
         Route::get('/', [BerkasController::class, 'index'])->name('index');
-        Route::get('/{berkas}', [BerkasController::class, 'show'])->name('show');
-        Route::get('/{berkas}/download', [BerkasController::class, 'download'])->name('download');
 
+        // create HARUS di atas /{berkas}
         Route::middleware('role:admin')->group(function () {
             Route::get('/create', [BerkasController::class, 'create'])->name('create');
             Route::post('/', [BerkasController::class, 'store'])->name('store');
             Route::delete('/{berkas}', [BerkasController::class, 'destroy'])->name('destroy');
         });
+
+        // Route dengan parameter di bawah
+        Route::get('/{berkas}', [BerkasController::class, 'show'])->name('show');
+        Route::get('/{berkas}/download', [BerkasController::class, 'download'])->name('download');
     });
+
 });
 
 require __DIR__ . '/auth.php';
