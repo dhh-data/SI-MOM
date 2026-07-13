@@ -174,7 +174,7 @@
      style="width:36px; height:36px; border-radius:8px; object-fit:contain; flex-shrink:0;">
 <div>
     <div style="font-weight:800; font-size:14px; color:#f1f5f9; letter-spacing:0.05em; line-height:1.2;">SI-MOM</div>
-    <div style="font-size:10px; color:#7ec8e3; line-height:1.2;">Manajemen Organisasi Mahasiswa</div>
+    <div style="font-size:10px; color:#7ec8e3; line-height:1.2;">Manajemen Organisasi Mahasiswa 2026/2027</div>
 </div>
     
             </div>
