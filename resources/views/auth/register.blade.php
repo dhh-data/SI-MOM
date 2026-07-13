@@ -252,7 +252,6 @@
         <option value="anggota"           {{ old('role') === 'anggota'           ? 'selected' : '' }}>Anggota / Staff</option>
         <option value="kepala_departemen" {{ old('role') === 'kepala_departemen' ? 'selected' : '' }}>Kepala Departemen</option>
         <option value="kepala_inventaris" {{ old('role') === 'kepala_inventaris' ? 'selected' : '' }}>Kepala Dep. Inventaris</option>
-        <option value="admin"             {{ old('role') === 'admin'             ? 'selected' : '' }}>Admin Utama</option>
     </select>
     @error('role')
     <p class="error-msg">{{ $message }}</p>
