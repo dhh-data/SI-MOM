@@ -32,21 +32,17 @@
     </div>
 
     {{-- Kategori Pills --}}
-    <div class="flex flex-wrap gap-2">
-        <a href="{{ route('berkas.index') }}"
-           class="px-3.5 py-1.5 rounded-full text-xs font-medium transition {{ !$kategori ? 'bg-blue-600 text-white' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50' }}">
-            Semua
-        </a>
-        @php
-        $katColors = ['Proposal'=>'blue','LPJ'=>'purple','Notulen'=>'green','Surat'=>'orange','Dokumentasi'=>'pink'];
-        @endphp
-        @foreach($katColors as $kat => $clr)
-        <a href="{{ route('berkas.index', ['kategori' => $kat]) }}"
-           class="px-3.5 py-1.5 rounded-full text-xs font-medium transition {{ $kategori === $kat ? "bg-{$clr}-600 text-white" : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50' }}">
-            {{ $kat }}
-        </a>
-        @endforeach
-    </div>
+        <div class="flex flex-wrap gap-2">
+            <a href="{{ route('berkas.index') }}" class="px-3.5 py-1.5 rounded-full text-xs font-medium transition {{ !$kategori ? 'bg-blue-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50' }}">
+                Semua
+            </a>
+            
+            @foreach(['Proposal', 'LPJ', 'Notulen', 'Surat', 'Dokumentasi'] as $kat)
+                <a href="{{ route('berkas.index', ['kategori' => $kat]) }}" class="px-3.5 py-1.5 rounded-full text-xs font-medium transition {{ $kategori === $kat ? 'bg-blue-600 text-white shadow-sm' : 'bg-white text-slate-600 border border-slate-200 hover:bg-slate-50' }}">
+                    {{ $kat }}
+                </a>
+            @endforeach
+        </div>
 
     {{-- Berkas Grid --}}
     @if($berkas->count())
