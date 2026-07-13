@@ -310,7 +310,7 @@
         </div>
  
         <div class="left-footer">
-            SIMOM v1.0 &copy; 2024 — Sistem Informasi Manajemen Organisasi Mahasiswa
+            SIMOM v1.0 &copy; 2026 — Sistem Informasi Manajemen Organisasi Mahasiswa 2026/2027
         </div>
     </div>
  
