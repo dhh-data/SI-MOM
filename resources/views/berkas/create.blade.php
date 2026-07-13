@@ -24,10 +24,16 @@
             <div>
                 <label class="block text-xs font-semibold text-slate-700 mb-1.5">Kategori <span class="text-red-500">*</span></label>
                 <div class="grid grid-cols-5 gap-2">
-                    @php
+                @php
                     $katIcons = ['Proposal'=>'📋','LPJ'=>'📊','Notulen'=>'📝','Surat'=>'✉️','Dokumentasi'=>'📁'];
-                    $katColors = ['Proposal'=>'border-blue-300 bg-blue-50 text-blue-700','LPJ'=>'border-blue-300 bg-blue-50 text-blue-700','Notulen'=>'border-blue-300 bg-blue-50 text-blue-700','Surat'=>'border-blue-300 bg-blue-50 text-blue-700','Dokumentasi'=>'border-blue-300 bg-blue-50 text-blue-700'];
-                    @endphp
+                    $katColors = [
+                        'Proposal'    => 'border-blue-300 bg-blue-50 text-blue-700',
+                        'LPJ'         => 'border-blue-300 bg-blue-50 text-blue-700',
+                        'Notulen'     => 'border-blue-300 bg-blue-50 text-blue-700',
+                        'Surat'       => 'border-blue-300 bg-blue-50 text-blue-700',
+                        'Dokumentasi' => 'border-blue-300 bg-blue-50 text-blue-700'
+                    ];
+                @endphp
                     @foreach($katIcons as $kat => $icon)
                     <label class="cursor-pointer">
                         <input type="radio" name="kategori" value="{{ $kat }}" class="sr-only peer" {{ old('kategori') === $kat ? 'checked' : '' }}>
